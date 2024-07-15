@@ -1,6 +1,4 @@
-// backend/routes/user.js
 const express = require('express');
-
 const router = express.Router();
 const zod = require("zod");
 const { User, Account } = require("../db");
@@ -43,7 +41,8 @@ router.post("/signup", async (req, res) => {
 
     await Account.create({
         userId,
-        balance: 1 + Math.random() * 10000
+        balance: 1 + Math.random() * 10000,
+        accountType: "User"
     })
 
     const token = jwt.sign({
